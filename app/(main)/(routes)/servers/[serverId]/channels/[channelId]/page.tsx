@@ -32,7 +32,7 @@ const ChannelIdPage = async ({ params }: ChannelIdPageProps) => {
     where: { channelId: params.channelId, fileUrl: { not: null } },
   });
 
-  console.log(files);
+  // console.log(files);
 
   if (!channel || !member) return redirect("/");
 
