@@ -5,6 +5,7 @@ import { SocketIndicator } from "../socket-indicator";
 // import { ChatVideoButton } from "./chat-video-button";
 import { Channel, Message } from "@prisma/client";
 import { ChatSheet } from "./chat-sheet";
+import { ChatVideoButton } from "./chat-video-button";
 
 interface ChatHeaderProps {
   serverId: string;
@@ -21,6 +22,7 @@ export const ChatHeader = ({ serverId, name, type, imageUrl }: ChatHeaderProps) 
       {type === "conversation" && <UserAvatar src={imageUrl} className='h-8 w-8 md:h-8 md:w-8 mr-2' />}
       <p className='font-semibold text-md text-black dark:text-white'>{name}</p>
       <div className='ml-auto flex items-center'>
+        {type === "conversation" && <ChatVideoButton />}
         <SocketIndicator />
         {/* <ChatSheet files={files} channel={channel} /> */}
       </div>
