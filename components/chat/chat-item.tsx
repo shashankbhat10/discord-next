@@ -76,7 +76,7 @@ export const ChatItem = ({
 
   useEffect(() => {
     form.reset({ content: content });
-  }, [content]);
+  }, [content, form]);
 
   useEffect(() => {
     const handleKeyDown = (event: any) => {
