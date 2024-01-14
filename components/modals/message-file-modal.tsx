@@ -12,9 +12,17 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/use-modal-store";
 import qs from "query-string";
+import { MessageFileUpload } from "../message-file-upload";
 
 const formSchema = z.object({
-  fileUrl: z.string().min(1, { message: "Attachment is required" }),
+  file: z.object({
+    name: z.string().min(1),
+    url: z.string().min(1),
+  }),
+  // file: {
+  //   fileUrl: z.string().min(1, { message: "Attachment is required" }),
+  //   fileName: z.string().min(1, { message: "Attachment is required" }),
+  // },
 });
 
 export const MessageFileModal = () => {
@@ -25,7 +33,7 @@ export const MessageFileModal = () => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fileUrl: "",
+      file: { name: "", url: "" },
     },
   });
 
@@ -35,7 +43,7 @@ export const MessageFileModal = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       const url = qs.stringifyUrl({ url: apiUrl || "", query: query });
-      await axios.post(url, { ...values, content: values.fileUrl });
+      await axios.post(url, { ...values, content: values.file.name });
 
       form.reset();
 
@@ -64,11 +72,12 @@ export const MessageFileModal = () => {
               <div className='flex items-center justify-center text-center'>
                 <FormField
                   control={form.control}
-                  name='fileUrl'
+                  name='file'
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <FileUpload endpoint='messageFile' value={field.value} onChange={field.onChange} />
+                        {/* <FileUpload endpoint='messageFile' value={field.value} onChange={field.onChange} /> */}
+                        <MessageFileUpload value={field.value} onChange={field.onChange} />
                       </FormControl>
                     </FormItem>
                   )}

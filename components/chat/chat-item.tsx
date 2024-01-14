@@ -29,6 +29,7 @@ interface ChatItemProps {
   isUpdated: boolean;
   socketUrl: string;
   socketQuery: Record<string, string>;
+  fileName: string | null;
 }
 
 const roleIconMap = {
@@ -52,6 +53,7 @@ export const ChatItem = ({
   socketQuery,
   socketUrl,
   timestamp,
+  fileName,
 }: ChatItemProps) => {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -146,7 +148,7 @@ export const ChatItem = ({
                 target='_blank'
                 rel='noopener noreferrer'
                 className='ml-2 text-sm text-indigo-500 dark:text-indigo-400 hover:underline'>
-                PDF File
+                {!!fileName ? fileName : "Unnamed PDF file"}
               </a>
             </div>
           )}
