@@ -3,8 +3,8 @@ import { MobileToggle } from "../mobile-toggle";
 import { UserAvatar } from "../user-avatar";
 import { SocketIndicator } from "../socket-indicator";
 // import { ChatVideoButton } from "./chat-video-button";
-import { Channel, Message } from "@prisma/client";
-import { ChatSheet } from "./chat-sheet";
+// import { Channel, Message } from "@prisma/client";
+// import { ChatSheet } from "./chat-sheet";
 import { ChatVideoButton } from "./chat-video-button";
 
 interface ChatHeaderProps {
