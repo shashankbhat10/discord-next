@@ -2,6 +2,9 @@ import { Hash } from "lucide-react";
 import { MobileToggle } from "../mobile-toggle";
 import { UserAvatar } from "../user-avatar";
 import { SocketIndicator } from "../socket-indicator";
+// import { ChatVideoButton } from "./chat-video-button";
+import { Channel, Message } from "@prisma/client";
+import { ChatSheet } from "./chat-sheet";
 import { ChatVideoButton } from "./chat-video-button";
 
 interface ChatHeaderProps {
@@ -21,6 +24,7 @@ export const ChatHeader = ({ serverId, name, type, imageUrl }: ChatHeaderProps) 
       <div className='ml-auto flex items-center'>
         {type === "conversation" && <ChatVideoButton />}
         <SocketIndicator />
+        {/* <ChatSheet files={files} channel={channel} /> */}
       </div>
     </div>
   );

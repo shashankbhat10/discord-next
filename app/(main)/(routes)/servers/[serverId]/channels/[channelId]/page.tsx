@@ -28,6 +28,12 @@ const ChannelIdPage = async ({ params }: ChannelIdPageProps) => {
     where: { serverId: params.serverId, profileId: profile.id },
   });
 
+  // const files = await db.message.findMany({
+  //   where: { channelId: params.channelId, fileUrl: { not: null } },
+  // });
+
+  // console.log(files);
+
   if (!channel || !member) return redirect("/");
 
   return (
