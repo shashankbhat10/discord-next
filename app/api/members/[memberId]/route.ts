@@ -28,7 +28,7 @@ export async function PATCH(req: Request, { params }: { params: { memberId: stri
   }
 }
 
-export async function Delete(req: Request, { params }: { params: { memberId: string } }) {
+export async function DELETE(req: Request, { params }: { params: { memberId: string } }) {
   try {
     if (!params.memberId) return new NextResponse("MemberId missing", { status: 401 });
 
